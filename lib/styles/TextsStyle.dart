@@ -8,7 +8,7 @@ final TextStyle valueTextStyle = TextStyle(
 
 final TextStyle labelTextStyle = TextStyle(
     fontWeight: FontWeight.normal,
-    fontSize: 16.0,
+    fontSize: 14.0,
     color: Colors.grey,
 );
 
@@ -57,5 +57,11 @@ final TextStyle subHeadingStyle = TextStyle(
 final TextStyle buttonStyle = TextStyle(
   fontWeight: FontWeight.bold,
   fontSize: 30.0,
+  color: Colors.white,
+);
+
+final TextStyle forumNameStyle = TextStyle(
+  fontWeight: FontWeight.w800,
+  fontSize: 22.0,
   color: Colors.white,
 );

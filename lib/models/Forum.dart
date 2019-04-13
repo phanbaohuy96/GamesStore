@@ -18,30 +18,32 @@ final fortniteTopic = [
   )
 ];
 
-class GameCard{
+class Forum{
   final String title, imagePath, rank, threads, subs;
   final List<Topic> topics;
 
-  GameCard({this.title, this.imagePath, this.rank, this.topics, this.threads, this.subs});
+  Forum({this.title, this.imagePath, this.rank, this.topics, this.threads, this.subs});
 }
 
-final fortnite = new GameCard(
+final fortnite = new Forum(
   title: "Fornite",
   imagePath: "assets/images/fortnite.jpg",
   rank: "32",
   threads: "80",
-  topics: fortniteTopic
+  topics: fortniteTopic,
+  subs: "1M+"
 );
 
-final pubg = new GameCard(
-    title: "Player unknow battle ground",
-    imagePath: "assets/images/pubg.jpg",
-    rank: "60",
-    threads: "80",
-    topics: fortniteTopic
+final pubg = new Forum(
+  title: "PUBG",
+  imagePath: "assets/images/pubg.jpg",
+  rank: "60",
+  threads: "80",
+  topics: fortniteTopic,
+  subs: "500M+"
 );
 
-final gameCards = [
+final forums = [
   fortnite,
   pubg
 ];
