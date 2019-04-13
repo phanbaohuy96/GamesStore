@@ -38,7 +38,7 @@ final TextStyle selectedTabStyle = TextStyle(
 
 final TextStyle defaultTabStyle = TextStyle(
   fontWeight: FontWeight.bold,
-  fontSize: 20.0,
+  fontSize: 18.0,
   color: Colors.grey,
 );
 
