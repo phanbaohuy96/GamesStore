@@ -36,7 +36,7 @@ final fortnite = new Forum(
 
 final pubg = new Forum(
   title: "PUBG",
-  imagePath: "assets/images/pubg.jpg",
+  imagePath: "assets/images/pubg2.jpg",
   rank: "60",
   threads: "80",
   topics: fortniteTopic,

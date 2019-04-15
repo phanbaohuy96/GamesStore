@@ -145,7 +145,7 @@ class _HorizontalTabLayoutState extends State<HorizontalTabLayout> with SingleTi
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: MediaQuery.of(context).size.height * 0.75,
+      height: MediaQuery.of(context).size.height * 0.7,
       child: Stack(        
         children: <Widget>[
           _buildTabBar(),

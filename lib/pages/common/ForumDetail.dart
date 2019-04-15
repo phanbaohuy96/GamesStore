@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:games_store/styles/TextsStyle.dart';
+import '../common/LabelSubLabelValue.dart';
+import '../../styles/TextsStyle.dart';
 import '../../models/Forum.dart';
 
 
@@ -49,19 +50,19 @@ class ForumDetail extends StatelessWidget {
               mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
-                LabelValue( 
+                LabelSubLabelValue( 
                   label: "Topics",
                   value: forum.topics.length.toString(),
                   labelStyle: labelTextStyle,
                   valueStyle: valueTextStyle,
                 ),
-                LabelValue(
+                LabelSubLabelValue(
                   label: "Threads",
                   value: forum.threads,
                   labelStyle: labelTextStyle,
                   valueStyle: valueTextStyle,
                 ),
-                LabelValue(
+                LabelSubLabelValue(
                   label: "Subs",
                   value: forum.subs,
                   labelStyle: labelTextStyle,
@@ -76,24 +77,6 @@ class ForumDetail extends StatelessWidget {
   }
 }
 
-class LabelValue extends StatelessWidget {
-
-  final String label, value;
-  final TextStyle labelStyle, valueStyle;
-
-  const LabelValue({this.label, this.value, this.labelStyle, this.valueStyle});
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: <Widget>[
-        Text(value, style: valueStyle,),
-        Text(label, style: labelStyle,)
-      ],
-    );
-  }
-}
 
 class MyCustomClipper extends CustomClipper<Path> {
   final double distanceFromWall = 12, controlPointDistanceFromWall = 2;

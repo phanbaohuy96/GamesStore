@@ -12,7 +12,7 @@ class ForumCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: 280.0,
+      width: 260.0,
       child: Card(
         elevation: 20,
         margin: EdgeInsets.symmetric(horizontal: 25.0 , vertical: 60.0),
