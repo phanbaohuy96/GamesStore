@@ -44,6 +44,7 @@ flutter:
   assets:
     - assets/images/fortnite.jpg
     - assets/images/pubg.jpg
+    - assets/images/pubg2.jpg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.io/assets-and-images/#resolution-aware.
