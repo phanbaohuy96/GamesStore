@@ -39,7 +39,7 @@ class ForumCard extends StatelessWidget {
                 ),
                 Positioned(
                   left: 0,
-                  bottom: 70.0,
+                  bottom: 65.0,
                   child: ForumNameButton(name: forum.title,)
                 ),
                 GestureDetector(
