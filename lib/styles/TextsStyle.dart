@@ -14,7 +14,7 @@ final TextStyle labelTextStyle = TextStyle(
 
 final TextStyle whiteValueTextStyle = TextStyle(
   fontWeight: FontWeight.bold,
-  fontSize: 18.0,
+  fontSize: 22.0,
   color: Colors.white,
 );
 
@@ -27,6 +27,12 @@ final TextStyle whiteLabelTextStyle = TextStyle(
 final TextStyle rankStyle = TextStyle(
   fontWeight: FontWeight.bold,
   fontSize: 20.0,
+  color: primaryColor,
+);
+
+final TextStyle rankBigStyle = TextStyle(
+  fontWeight: FontWeight.bold,
+  fontSize: 30.0,
   color: primaryColor,
 );
 
@@ -63,5 +69,23 @@ final TextStyle buttonStyle = TextStyle(
 final TextStyle forumNameStyle = TextStyle(
   fontWeight: FontWeight.w800,
   fontSize: 22.0,
+  color: Colors.white,
+);
+
+final TextStyle topicQuestionStyle = TextStyle(
+  fontWeight: FontWeight.w800,
+  fontSize: 16.0,
+  color: Colors.black,
+);
+
+final TextStyle topicAnswerStyle = TextStyle(
+  fontWeight: FontWeight.w200,
+  fontSize: 16.0,
+  color: Colors.blueGrey,
+);
+
+final TextStyle topicCountStyle = TextStyle(
+  fontWeight: FontWeight.bold,
+  fontSize: 16.0,
   color: Colors.white,
 );

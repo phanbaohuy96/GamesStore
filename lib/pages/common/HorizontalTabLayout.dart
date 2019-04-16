@@ -41,14 +41,17 @@ class HorizontalTabLayout extends StatefulWidget {
 class _HorizontalTabLayoutState extends State<HorizontalTabLayout> with SingleTickerProviderStateMixin{
 
   AnimationController _controller;
-  Animation<double> _animation;
+  Animation<double> _animationScale, _animationRotation;
   Animation<Offset> _animationSlide;
+  ScrollController _scrollController;
 
   @override
   void initState(){
     super.initState();    
-    _controller = new AnimationController(duration: Duration(milliseconds: 300), vsync: this);
-    _animation = new Tween<double>(begin: 0.6, end: 1.0).animate(_controller);
+    _scrollController = new ScrollController();
+    _controller = new AnimationController(duration: Duration(milliseconds: 500), vsync: this);
+    _animationScale = new Tween<double>(begin: 0.0, end: 1.0).animate(_controller);
+    _animationRotation = new Tween<double>(begin: 0.5, end: 0.0).animate(_controller);
     _animationSlide = new Tween<Offset>(begin: Offset(0.5, -0.5), end: Offset(0, 0)).animate(_controller);
   }
 
@@ -57,6 +60,7 @@ class _HorizontalTabLayoutState extends State<HorizontalTabLayout> with SingleTi
   {
     if(selectedIdx != idx)
       setState(() {
+        _scrollController.animateTo(0, duration: Duration(microseconds: 100), curve: Curves.bounceInOut);
         selectedIdx = idx;
       });
   }
@@ -111,6 +115,8 @@ class _HorizontalTabLayoutState extends State<HorizontalTabLayout> with SingleTi
         future: _playWitchTabAnimation(),
         builder: (context, snapshot){
           return ListView(
+            controller: _scrollController,
+            shrinkWrap: false,
             scrollDirection: Axis.horizontal,
             children: _getListItems(selectedIdx)
           );
@@ -122,20 +128,20 @@ class _HorizontalTabLayoutState extends State<HorizontalTabLayout> with SingleTi
   _getListItems(int idx)  {
     return [
       [
-        ScaleTransition(scale: _animation, child: ForumCard(forum: pubg,)),  
-        ForumCard(forum: fortnite,),
+        ScaleTransition(scale: _animationScale, child: ForumCard(forum: pubg,)),  
+        ScaleTransition(scale: _animationScale, child: ForumCard(forum: fortnite,)),        
         ForumCard(forum: pubg,),  
         ForumCard(forum: fortnite,) 
       ],
       [  
         SlideTransition(position: _animationSlide, child:ForumCard(forum: fortnite,)),
-        ForumCard(forum: pubg,),
+        SlideTransition(position: _animationSlide, child:ForumCard(forum: pubg,)),        
         ForumCard(forum: fortnite,),
         ForumCard(forum: pubg,)
       ],
       [
-        FadeTransition(opacity: _animation, child:ForumCard(forum: pubg,)),  
-        ForumCard(forum: fortnite,),
+        ScaleTransition(scale: _animationScale, child: RotationTransition(turns: _animationRotation, child:ForumCard(forum: pubg,))),  
+        ScaleTransition(scale: _animationScale, child: RotationTransition(turns: _animationRotation, child:ForumCard(forum: fortnite,))),
         ForumCard(forum: pubg,),  
         ForumCard(forum: fortnite,) 
       ]
@@ -145,7 +151,7 @@ class _HorizontalTabLayoutState extends State<HorizontalTabLayout> with SingleTi
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: MediaQuery.of(context).size.height * 0.7,
+      height: MediaQuery.of(context).size.height * 0.73,
       child: Stack(        
         children: <Widget>[
           _buildTabBar(),

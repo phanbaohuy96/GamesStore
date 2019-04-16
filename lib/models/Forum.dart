@@ -7,13 +7,33 @@ class Topic{
 
 final fortniteTopic = [
   Topic(
-    question: "Should we drop early",
+    question: "Should we drop early?",
     recentAnswer: "I don't know.",
     answerCount: "1234"
   ),
   Topic(
-    question: "Quitting fortnite because of this",
-    recentAnswer: "I don't know. I don't know. I don't know.",
+    question: "Quitting fortnite because of this?",
+    recentAnswer: "I don't know. I don't know. I don't know.I don't know. I don't know. I don't know.",
+    answerCount: "3662"
+  ),
+  Topic(
+    question: "Should we drop early?",
+    recentAnswer: "I don't know.",
+    answerCount: "1234"
+  ),
+  Topic(
+    question: "Quitting fortnite because of this?",
+    recentAnswer: "I don't know. I don't know. I don't know.I don't know. I don't know. I don't know.",
+    answerCount: "3662"
+  ),
+  Topic(
+    question: "Should we drop early?",
+    recentAnswer: "I don't know.",
+    answerCount: "1234"
+  ),
+  Topic(
+    question: "Quitting fortnite because of this?",
+    recentAnswer: "I don't know. I don't know. I don't know.I don't know. I don't know. I don't know.",
     answerCount: "3662"
   )
 ];
