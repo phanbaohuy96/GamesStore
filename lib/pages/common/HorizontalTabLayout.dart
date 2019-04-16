@@ -60,7 +60,7 @@ class _HorizontalTabLayoutState extends State<HorizontalTabLayout> with SingleTi
   {
     if(selectedIdx != idx)
       setState(() {
-        _scrollController.animateTo(0, duration: Duration(microseconds: 100), curve: Curves.bounceInOut);
+        _scrollController.animateTo(0, duration: Duration(microseconds: 0), curve: Curves.bounceInOut);
         selectedIdx = idx;
       });
   }
@@ -129,21 +129,15 @@ class _HorizontalTabLayoutState extends State<HorizontalTabLayout> with SingleTi
     return [
       [
         ScaleTransition(scale: _animationScale, child: ForumCard(forum: pubg,)),  
-        ScaleTransition(scale: _animationScale, child: ForumCard(forum: fortnite,)),        
-        ForumCard(forum: pubg,),  
-        ForumCard(forum: fortnite,) 
+        ScaleTransition(scale: _animationScale, child: ForumCard(forum: fortnite,))
       ],
       [  
         SlideTransition(position: _animationSlide, child:ForumCard(forum: fortnite,)),
-        SlideTransition(position: _animationSlide, child:ForumCard(forum: pubg,)),        
-        ForumCard(forum: fortnite,),
-        ForumCard(forum: pubg,)
+        SlideTransition(position: _animationSlide, child:ForumCard(forum: pubg,))
       ],
       [
         ScaleTransition(scale: _animationScale, child: RotationTransition(turns: _animationRotation, child:ForumCard(forum: pubg,))),  
-        ScaleTransition(scale: _animationScale, child: RotationTransition(turns: _animationRotation, child:ForumCard(forum: fortnite,))),
-        ForumCard(forum: pubg,),  
-        ForumCard(forum: fortnite,) 
+        ScaleTransition(scale: _animationScale, child: RotationTransition(turns: _animationRotation, child:ForumCard(forum: fortnite,)))
       ]
     ][idx];
   }

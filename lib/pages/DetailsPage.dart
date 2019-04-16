@@ -70,9 +70,12 @@ class DetailsPage extends StatelessWidget {
               ),
               SizedBox(
                 height: contextSize.height * 0.6,
-                child: ClipRRect(
-                  child: Image.asset(forum.imagePath, fit: BoxFit.fitWidth, width: double.infinity,),
-                  borderRadius: BorderRadius.only(topLeft: Radius.circular(60)),
+                child: Hero(
+                  tag: forum.title,
+                  child: ClipRRect(
+                    child: Image.asset(forum.imagePath, fit: BoxFit.fitWidth, width: double.infinity,),
+                    borderRadius: BorderRadius.only(topLeft: Radius.circular(60)),
+                  ),
                 ),               
               )
             ],

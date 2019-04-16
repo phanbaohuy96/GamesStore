@@ -12,10 +12,8 @@ class ForumCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      onTap: (){
-        Navigator.push(context, MaterialPageRoute(builder: (context) => DetailsPage(forum)));
-      },
+    return Hero(
+      tag: forum.title,
       child: SizedBox(
         width: 260.0,
         child: Card(
@@ -43,7 +41,12 @@ class ForumCard extends StatelessWidget {
                   left: 0,
                   bottom: 70.0,
                   child: ForumNameButton(name: forum.title,)
-                )
+                ),
+                GestureDetector(
+                  onTapUp: (detail){
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => DetailsPage(forum)));
+                  },
+                ),
               ],
             ),
           ),
