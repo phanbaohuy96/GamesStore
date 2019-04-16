@@ -10,10 +10,11 @@ class LabelSubLabelValue extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      mainAxisAlignment: MainAxisAlignment.end,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
-        Text(value, style: valueStyle,),
-        Text(label, style: labelStyle,)
+        Text(value, style: valueStyle, overflow: TextOverflow.ellipsis,),
+        Text(label, style: labelStyle, overflow: TextOverflow.ellipsis)
       ],
     );
   }

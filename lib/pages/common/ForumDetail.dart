@@ -19,62 +19,65 @@ class ForumDetail extends StatelessWidget {
         color: Colors.white,
         padding: EdgeInsets.only(left: 20.0, right: 10.0, top: 25.0, bottom: 12.0),
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
-            Align(
-              alignment: Alignment.topRight,
-              child: Column(
-                children: <Widget>[
-                  Container(
-                    decoration: new BoxDecoration(
-                      shape: BoxShape.circle,
-                      border: Border.all(
-                        color: Colors.grey.withOpacity(0.4),
-                        width: 2.0
-                      )
+            Flexible(
+              child: Align(
+                alignment: Alignment.topRight,
+                child: Column(
+                  children: <Widget>[
+                    Flexible(
+                      child: Container(
+                        decoration: new BoxDecoration(
+                          shape: BoxShape.circle,
+                          border: Border.all(
+                            color: Colors.grey.withOpacity(0.4),
+                            width: 2.0
+                          )
+                        ),
+                        height: 40.0,
+                        width: 40.0,
+                        child: Center(
+                          child: Text(forum.rank, style: rankStyle,),
+                        ),
+                      ),
                     ),
-                    height: 40.0,
-                    width: 40.0,
-                    child: Center(
-                      child: Text(forum.rank, style: rankStyle,),
-                    ),
-                  ),
-                  Text('New', style: labelTextStyle,)
-                ],
+                    Text('New', style: labelTextStyle,),
+                  ],
+                ),
               ),
             ),
-            SizedBox(
-              height: 25,
-
-            ),
-            Row(
-              mainAxisSize: MainAxisSize.max,
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                Flexible(
-                  child: LabelSubLabelValue( 
-                    label: "Topics",
-                    value: forum.topics.length.toString(),
-                    labelStyle: labelTextStyle,
-                    valueStyle: valueTextStyle,
+            Flexible(
+              child: Row(
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  Flexible(
+                    child: LabelSubLabelValue(
+                      label: "Topics",
+                      value: forum.topics.length.toString(),
+                      labelStyle: labelTextStyle,
+                      valueStyle: valueTextStyle,
+                    ),
                   ),
-                ),
-                Flexible(
-                  child: LabelSubLabelValue(
-                    label: "Threads",
-                    value: forum.threads,
-                    labelStyle: labelTextStyle,
-                    valueStyle: valueTextStyle,
+                  Flexible(
+                    child: LabelSubLabelValue(
+                      label: "Threads",
+                      value: forum.threads,
+                      labelStyle: labelTextStyle,
+                      valueStyle: valueTextStyle,
+                    ),
                   ),
-                ),
-                Flexible(
-                  child: LabelSubLabelValue(
-                    label: "Subs",
-                    value: forum.subs,
-                    labelStyle: labelTextStyle,
-                    valueStyle: valueTextStyle,
-                  ),
-                )
-              ],
+                  Flexible(
+                    child: LabelSubLabelValue(
+                      label: "Subs",
+                      value: forum.subs,
+                      labelStyle: labelTextStyle,
+                      valueStyle: valueTextStyle,
+                    ),
+                  )
+                ],
+              ),
             )
           ],
         ),
