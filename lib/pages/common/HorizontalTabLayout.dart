@@ -60,7 +60,7 @@ class _HorizontalTabLayoutState extends State<HorizontalTabLayout> with SingleTi
   {
     if(selectedIdx != idx)
       setState(() {
-        _scrollController.animateTo(0, duration: Duration(microseconds: 0), curve: Curves.bounceInOut);
+        _scrollController.animateTo(0, duration: Duration(microseconds: 50), curve: Curves.bounceInOut);
         selectedIdx = idx;
       });
   }
