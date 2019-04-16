@@ -55,6 +55,13 @@ class _HorizontalTabLayoutState extends State<HorizontalTabLayout> with SingleTi
     _animationSlide = new Tween<Offset>(begin: Offset(0.5, -0.5), end: Offset(0, 0)).animate(_controller);
   }
 
+  @override
+  void dispose()
+  {
+    _controller.dispose();
+    super.dispose();
+  }
+
   int selectedIdx = 2;
   _onTap(int idx)
   {
