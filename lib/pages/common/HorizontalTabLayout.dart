@@ -1,4 +1,6 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:games_store/api/FirebaseService.dart';
 import 'package:games_store/pages/common/ForumCard.dart';
 import '../../styles/TextsStyle.dart';
 import '../../models/Forum.dart';
@@ -41,7 +43,6 @@ class HorizontalTabLayout extends StatefulWidget {
 class _HorizontalTabLayoutState extends State<HorizontalTabLayout> with SingleTickerProviderStateMixin{
 
   AnimationController _controller;
-  Animation<double> _animationScale, _animationRotation;
   Animation<Offset> _animationSlide;
   ScrollController _scrollController;
 
@@ -50,8 +51,6 @@ class _HorizontalTabLayoutState extends State<HorizontalTabLayout> with SingleTi
     super.initState();    
     _scrollController = new ScrollController();
     _controller = new AnimationController(duration: Duration(milliseconds: 500), vsync: this);
-    _animationScale = new Tween<double>(begin: 0.0, end: 1.0).animate(_controller);
-    _animationRotation = new Tween<double>(begin: 0.5, end: 0.0).animate(_controller);
     _animationSlide = new Tween<Offset>(begin: Offset(0.5, -0.5), end: Offset(0, 0)).animate(_controller);
   }
 
@@ -121,32 +120,32 @@ class _HorizontalTabLayoutState extends State<HorizontalTabLayout> with SingleTi
       child: FutureBuilder(
         future: _playWitchTabAnimation(),
         builder: (context, snapshot){
-          return ListView(
-            controller: _scrollController,
-            shrinkWrap: false,
-            scrollDirection: Axis.horizontal,
-            children: _getListItems(selectedIdx)
+          return StreamBuilder(
+            stream: FirebaseService.instance.listStream,
+            builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> asyncSnapshot){
+              if(asyncSnapshot.hasError) return Center(child: Text("Error..."),);
+
+              switch(asyncSnapshot.connectionState){
+                case ConnectionState.waiting: return Center(child: CircularProgressIndicator(),);
+                default: return _buildListItem(context, asyncSnapshot.data.documents);
+              }              
+            },
           );
         },
       ),
     );
   }
 
-  _getListItems(int idx)  {
-    return [
-      [
-        ScaleTransition(scale: _animationScale, child: ForumCard(forum: pubg,)),  
-        ScaleTransition(scale: _animationScale, child: ForumCard(forum: fortnite,))
-      ],
-      [  
-        SlideTransition(position: _animationSlide, child:ForumCard(forum: fortnite,)),
-        SlideTransition(position: _animationSlide, child:ForumCard(forum: pubg,))
-      ],
-      [
-        ScaleTransition(scale: _animationScale, child: RotationTransition(turns: _animationRotation, child:ForumCard(forum: pubg,))),  
-        ScaleTransition(scale: _animationScale, child: RotationTransition(turns: _animationRotation, child:ForumCard(forum: fortnite,)))
-      ]
-    ][idx];
+  Widget _buildListItem(BuildContext context, List<DocumentSnapshot> documents) {
+    print("Document ${documents.length}");
+    return ListView.builder(
+      controller: _scrollController,
+      itemCount: documents.length,
+      scrollDirection: Axis.horizontal,
+      itemBuilder: (context, index){
+        return SlideTransition(position: _animationSlide, child:ForumCard(forum: Forum.fromSnapshot(documents[index])));
+      },
+    );
   }
 
   @override
@@ -162,4 +161,5 @@ class _HorizontalTabLayoutState extends State<HorizontalTabLayout> with SingleTi
     )
     ;
   }
+
 }

@@ -117,7 +117,7 @@ class _DetailsPageState extends State<DetailsPage> with SingleTickerProviderStat
                     child: Image.asset(widget.forum.imagePath, fit: BoxFit.fitWidth, width: double.infinity,),
                     borderRadius: BorderRadius.only(topLeft: Radius.circular(60)),
                   ),
-                ),               
+                ),
               )
             ],
           ),

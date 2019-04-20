@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "912518288435",
+    "firebase_url": "https://flutter-game-store.firebaseio.com",
+    "project_id": "flutter-game-store",
+    "storage_bucket": "flutter-game-store.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:912518288435:android:f5a3d32eee9886f4",
+        "android_client_info": {
+          "package_name": "com.baohuy.games_store"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "912518288435-3ojiiom58idv3r3rr05mjjrpanndmeae.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB62ftGH0kwm7O_vnAUo4IPRmmDeB7ljs0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "912518288435-3ojiiom58idv3r3rr05mjjrpanndmeae.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
