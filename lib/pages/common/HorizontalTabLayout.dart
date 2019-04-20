@@ -88,21 +88,21 @@ class _HorizontalTabLayoutState extends State<HorizontalTabLayout> with SingleTi
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: <Widget>[
             TabText(
-              text: "Media",
+              text: _getTypeByIndex(0),
               isSelected: selectedIdx == 0,
               onTap: (){
                 _onTap(0);
               },
             ),
             TabText(
-              text: "Streamers",
+              text: _getTypeByIndex(1),
               isSelected: selectedIdx == 1,
               onTap: (){
                 _onTap(1);
               }
             ),
             TabText(
-              text: "Forum",
+              text: _getTypeByIndex(2),
               isSelected: selectedIdx == 2,
               onTap: (){
                 _onTap(2);
@@ -121,7 +121,7 @@ class _HorizontalTabLayoutState extends State<HorizontalTabLayout> with SingleTi
         future: _playWitchTabAnimation(),
         builder: (context, snapshot){
           return StreamBuilder(
-            stream: FirebaseService.instance.listStream,
+            stream: FirebaseService.instance.getList(_getTypeByIndex(selectedIdx).toLowerCase()),
             builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> asyncSnapshot){
               if(asyncSnapshot.hasError) return Center(child: Text("Error..."),);
 
@@ -134,6 +134,17 @@ class _HorizontalTabLayoutState extends State<HorizontalTabLayout> with SingleTi
         },
       ),
     );
+  }
+
+  _getTypeByIndex(idx)
+  {
+    switch(idx)
+    {
+      case 0: return "Media";
+      case 1: return "Streamers";
+      case 2: return "Forum";
+      default: return "Forum";
+    }
   }
 
   Widget _buildListItem(BuildContext context, List<DocumentSnapshot> documents) {
